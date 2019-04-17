@@ -1,13 +1,12 @@
 # Desafio backend iTFLEX Tecnologia
 
-### Objetivo
+O desafio é criar uma API de consulta de livros, casas e personagens do
+show Game of Thrones.
 
-Criar uma API de um aplicativo de lista de tarefas.
+A API deve ter disponibilizar as operações de consulta, cadastro e
+remoção de itens, e também deve permitir a consulta textual dos itens.
 
-A API deve ter disponibilizar as operações de cadastro de tarefas,
-marcar como concluida e excluir tarefas.
-
-### Requisitos
+Requisitos técnicos:
 
 * Desenvolver em Python, NodeJS, PHP ou Ruby
 * API deve seguir os princípios REST
@@ -17,62 +16,16 @@ marcar como concluida e excluir tarefas.
   * MySQL
 * Documentar como rodar o projeto
 
-### Operações desejadas
+Requisitos funcionais:
 
-* Cadastro de tarefas
-* Marcar tarefas como concluidas
-* Excluir tarefas
+* Dados das APIs no formato JSON;
+* Operações CRUD de livros, casas e personagens;
+* API de consulta de todos os itens por nome (retornar campo com tipo do item);
+* Script/Código para cadastrar os dados por meio da API (usar os dados de [./data](./data)).
 
-### Exemplos de requisições
+Para ganhar alguns pontos extras, podem ser implementadas as funcionalidades abaixo:
 
-Requisições e suas respectivas respostas esperadas. Iremos usar estes exemplos para testar sua aplicação.
-
-* Criar uma tarefa:
-
-```
-curl -X POST -H "Content-Type: application/json" -d '{"task": "Tomar um café", "done": false}' http://localhost:xxxx/api/tasks
-Resposta: HTTP 201
-{
-  "id": 2,
-  "task": "Tomar um café",
-  "done": false
-}
-```
-
-* Lista de tarefas:
-
-```
-curl -X GET http://localhost:xxxx/api/tasks
-Resposta: HTTP 200
-[
-  {
-    "id": 1,
-    "task": "Fazer desafio da iTFLEX",
-    "done": false
-  },
-  {
-    "id": 2,
-    "task": "Tomar um café",
-    "done": true
-  }
-]
-```
-
-* Marcar tarefa como concluida:
-
-```
-curl -X PUT -H "Content-Type: application/json" -d '{"done": true}' http://localhost:xxxx/api/tasks/1
-Resposta: HTTP 200
-{
-  "id": 1,
-  "task": "Fazer desafio da iTFLEX",
-  "done": true
-}
-```
-
-* Excluir uma tarefa:
-
-```
-curl -X DELETE http://localhost:xxxx/tasks/1/
-Resposta: HTTP 204
-```
+* Paginação das APIs de listagem;
+* Autenticação por tokens assinados (JWT ou similar);
+* Permissões de consulta por tipo de item;
+* Pesquisa full text search, com score de itens encontrados.
