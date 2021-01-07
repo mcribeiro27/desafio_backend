@@ -1,31 +1,48 @@
-# Desafio backend iTFLEX Tecnologia
+## Desafioflex
 
-O desafio é criar uma API de consulta de livros, casas e personagens do
-show Game of Thrones.
+### Objetivo
 
-A API deve ter disponibilizar as operações de consulta, cadastro e
-remoção de itens, e também deve permitir a consulta textual dos itens.
+O desafio é criar uma API para gerenciamento de certificados utilizando o conceito de RESTFULL e deve conter, cadastro, listagem edição e deleção.
 
-Requisitos técnicos:
+### Requisitos
 
-* Desenvolver em Python, NodeJS, PHP ou Ruby
-* API deve seguir os princípios REST
+* Nossa stack é desenvolvida em Python 3, porem pode ser feito em NodeJS, PHP ou Ruby
+* API deve seguir os princípios REST (Utilizar FLASK é um diferencial)
 * Salvar as informações necessárias em um dos bancos de dados relacionais abaixo:
   * Sqlite
   * PostgreSQL
   * MySQL
-* Documentar como rodar o projeto
+* Ter cobertura de teste no código (TDD - Utilizar pytest é um diferencial)
+* Documentar com README como executar o projeto
+* Subir a aplicação em alguma plataforma (Exemplo Heroku)
 
-Requisitos funcionais:
+### Diferencial
+* Implementar utilizando `Clean Architecture`
+* Utiliza SQLAlchemy na camada de banco
+* Utiliza sql-migrate para construir banco
 
-* Dados das APIs no formato JSON;
-* Operações CRUD de livros, casas e personagens;
-* API de consulta de todos os itens por nome (retornar campo com tipo do item);
-* Script/Código para cadastrar os dados por meio da API (usar os dados de [./data](./data)).
+### Plus
+* `groups` o objetivo deste campo é organiza os certificados em grupos.
+  O certificado pode pertencer a mais de um grupo.
+  Este campo recebe uma lista de interios, pre-definidos:
+    - `01`: Adm
+    - `15`: Comercial
+    - `30`: RH
+* Na listagem permitir ordena pelos campos `username` e `name`
+* Na listagem permitir filtra pelos campos `username` e `name`
 
-Para ganhar alguns pontos extras, podem ser implementadas as funcionalidades abaixo:
+### Campos
 
-* Paginação das APIs de listagem;
-* Autenticação por tokens assinados (JWT ou similar);
-* Permissões de consulta por tipo de item;
-* Pesquisa full text search, com score de itens encontrados.
+```
+{
+  "id": 1,
+  "username": "joaos", //obrigatório e único, permitindo caracteres `a-z` e `0-9` e máximo de caracteres deve ser 30
+  "name": "João da Silva", //obrigatório e máximo de caracteres deve ser 255
+  "description": "",
+  "groups": [15],
+  "expiration" 10, //representa o número de dias que o certificado é valido, o número deve estar entre 10 e 3650.
+  "expirated_at": "2020-10-21T13:45:11-03:00", //preenche com a data calculda com base no valor informado no campo expiration, não é cadastrado e nem editado
+  "created_at": "2020-10-21T13:45:11-03:00", //preenche com a data atual quando esta criando o certificado
+  "updated_at": "2020-10-21T13:45:11-03:00" //preenche com a data atual quando esta modificando o certificado
+}
+```
